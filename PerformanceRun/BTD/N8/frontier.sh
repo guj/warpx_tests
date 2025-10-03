@@ -121,6 +121,7 @@ runMe()
 # encoding
 ENC=g
 key=default
+fileType=bp
 
 mkdir ${SLURM_JOBID}
 
@@ -135,7 +136,7 @@ useConfig()
     fi
     
     # executable & inputs file or python interpreter & PICMI script here
-    INPUTS=${pwd}/../../../inputs_3d/opmd/btd_${key}/input.n${SLURM_NNODES}${ENC}
+    INPUTS=${pwd}/../../../inputs_3d/opmd/btd_${key}/${fileType}/input.n${SLURM_NNODES}${ENC}
 
     mkdir   ${SLURM_JOBID}/${ENC}_${SLURM_JOBID}_${deco}${key}_${SLURM_NNODES}n
     pushd   ${SLURM_JOBID}/${ENC}_${SLURM_JOBID}_${deco}${key}_${SLURM_NNODES}n
