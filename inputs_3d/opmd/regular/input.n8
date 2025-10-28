@@ -2,7 +2,7 @@
 ####### GENERAL PARAMETERS ######
 #################################
 max_step = 500           # for production, run for longer time, e.g. max_step = 1000
-amr.n_cell = 512 256 256   # for production, run with finer mesh, e.g. amr.n_cell = 64 64 512
+amr.n_cell = 1024 512 512   # for production, run with finer mesh, e.g. amr.n_cell = 64 64 512
 amr.max_grid_size = 64   # maximum size of each AMReX box, used to decompose the domain
 amr.blocking_factor = 32 # minimum size of each AMReX box, used to decompose the domain
 geometry.dims = 3
