@@ -103,33 +103,33 @@ laser1.profile_focal_distance = 0.5e-3  # Focal distance from the antenna (in me
 laser1.wavelength = 0.81e-6         # The wavelength of the laser (in meters)
 
 # Diagnostics
-#diagnostics.diags_names = diag1_f diag2_f
-diagnostics.diags_names = diag1_f
+#diagnostics.diags_names = diag1 diag2
+diagnostics.diags_names = diag1
 
-diag1_f.diag_type = BackTransformed
-diag1_f.do_back_transformed_fields = 1
-diag1_f.num_snapshots_lab = 4
-diag1_f.dz_snapshots_lab = 0.001
-diag1_f.fields_to_plot = Ex Ey Ez Bx By Bz jx jy jz rho
-#diag1_f.format = plotfile
-diag1_f.buffer_size = 32
-diag1_f.write_species = 1
+diag1.diag_type = BackTransformed
+diag1.do_back_transformed_fields = 1
+diag1.num_snapshots_lab = 4
+diag1.dz_snapshots_lab = 0.001
+diag1.fields_to_plot = Ex Ey Ez Bx By Bz jx jy jz rho
+#diag1.format = plotfile
+diag1.buffer_size = 32
+diag1.write_species = 1
 
-diag1_f.format = openpmd
-diag1_f.openpmd_backend=bp
-diag1_f.openpmd_encoding=f
-diag1_f.adios2_engine.type=bp4
-diag1_f.adios2_engine.parameters.FlattenSteps=on
+diag1.format = openpmd
+diag1.openpmd_backend=bp
+diag1.openpmd_encoding=f
+diag1.adios2_engine.type=bp4
+diag1.adios2_engine.parameters.FlattenSteps=on
 
 
-diag2_f.diag_type = BackTransformed
-diag2_f.do_back_transformed_fields = 1
-diag2_f.intervals = 0:3:2, 1:3:2
-diag2_f.dz_snapshots_lab = 0.001
-diag2_f.fields_to_plot = Ex Ey Ez Bx By Bz jx jy jz rho
-#diag2_f.format = plotfile
-diag2_f.buffer_size = 32
+diag2.diag_type = BackTransformed
+diag2.do_back_transformed_fields = 1
+diag2.intervals = 0:3:2, 1:3:2
+diag2.dz_snapshots_lab = 0.001
+diag2.fields_to_plot = Ex Ey Ez Bx By Bz jx jy jz rho
+#diag2.format = plotfile
+diag2.buffer_size = 32
 
-diag2_f.format = openpmd
-diag2_f.openpmd_backend=bp
-diag2_f.openpmd_encoding=f
+diag2.format = openpmd
+diag2.openpmd_backend=bp
+diag2.openpmd_encoding=f

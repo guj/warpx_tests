@@ -1,2 +1,9 @@
 The frontier burst buffer (node local storage)
 can be used with BP4 (not BP5)
+
+
+Add these lines for "diag1" inputs in order to use burst buffer on Frontier
+< diag1.adios2_engine.type=bp4
+< diag1.adios2_engine.parameters.BurstBufferPath=/mnt/bb/junmin
+< diag1.adios2_engine.parameters.BurstBufferDrain=On
+< diag1.adios2_engine.parameters.BurstBufferVerbose=0
