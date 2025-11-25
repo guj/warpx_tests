@@ -1,0 +1,1 @@
+grep WriteToF */outs/* | awk -F: 'NR==2 || NR==6 || NR==10 {print "line " $1 ": " $4}' | awk '{print $2, $7}'
