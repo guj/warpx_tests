@@ -162,7 +162,8 @@ useConfig()
 	date
 
 	runMe TwoLevelShm          tls_rank   ${TOTAL_NMPI} 
-	runMe EveryoneWritesSerial ews_rank   ${TOTAL_NMPI} 
+	runMe EveryoneWritesSerial ews_rank   ${TOTAL_NMPI}
+	runMe DataSizeBased        dsb_rank   ${TOTAL_NMPI} 	
 	
 	date
     fi
