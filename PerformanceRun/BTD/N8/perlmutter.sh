@@ -73,11 +73,12 @@ checkData()
 	    time ${BPLS}  ${bpPath} -d ${idVarName} | tail  >> ${MISC_DIR}/${jsonDestination}/${fileName}_bid_bpls_d
 	fi
     fi
-    
+
     du -m ${bpPath}
-    ls -lt ${bpPath} |wc
+    ls -lt ${bpPath} | wc
+    ls -laR ${bpPath} | grep -v '^d' | grep -v ' 0 '
     
-    #rm -rf ${bpPath}/data*
+    rm -rf ${bpPath}/data*
 }
 
 runMe()
@@ -86,6 +87,8 @@ runMe()
     echo "export OPENPMD_ADIOS2_BP5_TypeAgg=$1"
     aggDesc=$2
     export OPENPMD_ADIOS2_BP5_NumAgg=$3
+    ## NumSubFiles for DSB
+    export OPENPMD_ADIOS2_BP5_NumSubFiles=$3
     echo "export OPENPMD_ADIOS2_BP5_NumAgg=$3"
     
     cp ${INPUTS} ${MISC_DIR}
@@ -152,7 +155,8 @@ useConfig()
     mkdir ${MISC_DIR}/${key}
 
     #if [ -z "$2" ]; then
-    if [ "$3" = "nullcore" ]; then
+    #if [ "$3" = "nullcore" ]; then
+    if [[ "$3" = nullcore* ]]; then
 	echo "Nullcore Test"
 	export OPENPMD_ADIOS2_ENGINE=nullcore
 	runMe TwoLevelShm          tls_rank_nullcore   ${TOTAL_NMPI}
@@ -162,7 +166,7 @@ useConfig()
 
 	runMe TwoLevelShm          tls_rank   ${TOTAL_NMPI} 
 	runMe EveryoneWritesSerial ews_rank   ${TOTAL_NMPI}
-	runMe DataSizeBased        dbs_rank   ${TOTAL_NMPI} 	
+	runMe DataSizeBased        dsb_rank   ${TOTAL_NMPI} 	
 	
 	date
     fi
@@ -178,6 +182,10 @@ useConfig()
 #    # never run flatten_joined useConfig g flatten_joined async
 
 export OPENPMD_ADIOS2_ASYNC_WRITE=0
+
+## run a nullcore0 to avoid first job punishment
+## seen in some large warpx runs
+useConfig f default nullcore0
 useConfig f default nullcore
 #useConfig f flatten 
 #useConfig f joined nullcore
