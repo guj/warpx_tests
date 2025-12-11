@@ -97,6 +97,7 @@ runMe()
     echo "export OPENPMD_ADIOS2_BP5_TypeAgg=$1"
     aggDesc=$2
     export OPENPMD_ADIOS2_BP5_NumAgg=$3
+    export OPENPMD_ADIOS2_BP5_NumSubFiles=$3
     echo "export OPENPMD_ADIOS2_BP5_NumAgg=$3"
     
     cp ${INPUTS} ${MISC_DIR}
