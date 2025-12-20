@@ -55,7 +55,7 @@ date
 pwd=`pwd`
 echo ${pwd}
 
-export BPLS=${pwd}/../../bpls
+export BPLS=${pwd}/../../../bpls
 export EXE=${pwd}/../../../EXE
 
 echo "bpls=", ${BPLS}
@@ -85,9 +85,9 @@ checkData()
 	fi
     fi
     
-    du -m ${bpPath}
     ls -lt ${bpPath} |wc
-    
+    echo "    du -m ${bpPath} "
+    du -m ${bpPath} 
     #rm -rf ${bpPath}/data*
 }
 
@@ -154,7 +154,7 @@ useConfig()
     mkdir ${MISC_DIR}/${key}
 
     #if [ -z "$2" ]; then
-    if [ "$3" = "nullcore" ]; then
+    if [[ "$3" = nullcore* ]]; then
 	echo "Nullcore Test"
 	export OPENPMD_ADIOS2_ENGINE=nullcore
 	runMe TwoLevelShm          tls_rank_nullcore   ${TOTAL_NMPI}
@@ -174,11 +174,12 @@ useConfig()
 
 export OPENPMD_ADIOS2_ASYNC_WRITE=0
 
-useConfig f joined nullcore
+useConfig f default nullcore0
+useConfig f default nullcore
 useConfig f default
 useConfig f flatten
-useConfig f joined 
-useConfig f default nullcore
+#useConfig f joined 
+#useConfig f default nullcore
 
 
 
