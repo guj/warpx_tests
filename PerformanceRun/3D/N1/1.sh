@@ -2,7 +2,7 @@
 
 #SBATCH -A csc143
 #SBATCH -J warpx
-#SBATCH -t 00:10:00
+#SBATCH -t 00:05:00
 #SBATCH -p batch
 #SBATCH --ntasks-per-node=8
 # Due to Frontier's Low-Noise Mode Layout only 7 instead of 8 cores are available per process
